@@ -55,7 +55,7 @@ Route::post('/expense-update','Expense@update');
 Route::post('/expense-add','Expense@store');
 Route::post('/expense-delete','Expense@delete');
 
-Route::get('/fetch-expenses','Dashboard@fetchExpenses');
+Route::get('/fetch-expenses','DashBoard@fetchExpenses');
 
 
 
