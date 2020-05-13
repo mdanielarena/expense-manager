@@ -114,28 +114,33 @@ $(function () {
 
 window.renderChart = function (res) {
   var val = JSON.parse(Base64.decode(res));
-  var labels = [];
-  var data = [];
 
-  for (var x = 0; x < val['value'].length; x++) {
-    labels = [].concat(_toConsumableArray(labels), ["".concat(val['value'][x]['category'], " $").concat(val['value'][x]['amount'])]);
-    data = [].concat(_toConsumableArray(data), [val['value'][x]['amount']]);
-  }
+  if (val['value'].length) {
+    var labels = [];
+    var data = [];
 
-  var brandPrimary = '#33b35a';
-  var PIECHART = $('#pieChart');
-  var myPieChart = new Chart(PIECHART, {
-    type: 'doughnut',
-    data: {
-      labels: labels,
-      datasets: [{
-        data: data,
-        borderWidth: [1, 1, 1],
-        backgroundColor: [brandPrimary, "rgba(75,192,192,1)", "#FFCE56"],
-        hoverBackgroundColor: [brandPrimary, "rgba(75,192,192,1)", "#FFCE56"]
-      }]
+    for (var x = 0; x < val['value'].length; x++) {
+      labels = [].concat(_toConsumableArray(labels), ["".concat(val['value'][x]['category'], " $").concat(val['value'][x]['amount'])]);
+      data = [].concat(_toConsumableArray(data), [val['value'][x]['amount']]);
     }
-  });
+
+    var brandPrimary = '#33b35a';
+    var PIECHART = $('#pieChart');
+    var myPieChart = new Chart(PIECHART, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          borderWidth: [1, 1, 1],
+          backgroundColor: [brandPrimary, "rgba(75,192,192,1)", "#FFCE56"],
+          hoverBackgroundColor: [brandPrimary, "rgba(75,192,192,1)", "#FFCE56"]
+        }]
+      }
+    });
+  } else {
+    $("#dash_err").html('<div class="alert alert-danger">kindly, insert expense_categories data directly in the db</div>');
+  }
 };
 
 /***/ }),

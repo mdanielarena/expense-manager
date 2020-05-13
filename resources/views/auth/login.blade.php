@@ -24,7 +24,7 @@
             <form class="text-left form-validate" action='/authenticate' method='post'>
               @csrf
               @if(Session::has('message'))
-				<div class="alert alert-danger">{!! Session::get('message') !!}</div>
+				        <div class="alert alert-danger">{!! Session::get('message') !!}</div>
               @endif
               <div class="form-group-material">
                 <input id="login-username" type="text" name="username" required data-msg="Please enter your username" class="input-material">

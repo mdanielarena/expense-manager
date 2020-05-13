@@ -18,13 +18,14 @@ class DashBoard extends Controller
 
     public function index() {
 
-        return view('pages.dashboard',['data' => $this->_global->getAuthData(),'fetchData'=>$this->fetchExpenses()]);
+        return view('pages.dashboard',['data' => $this->_global->getAuthData()]);
     }
 
     public function fetchExpenses() {
      
         $ec = DB::table('expense_categories')->get();
         $a = 0;
+        $value = array();
         foreach($ec as $ec) {
 
             $total = 0;

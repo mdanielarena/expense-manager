@@ -23,6 +23,9 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     <form class="text-left form-validate" action="sign-up" method="post">
                         @csrf
+                        @if(Session::has('message'))
+                            <div class="alert alert-danger">{!! Session::get('message') !!}</div>
+                        @endif
                         <div class="form-group-material">
                             <input id="register-username" type="text" name="username" required data-msg="Please enter your username" class="input-material">
                             <label for="register-username" class="label-material">Username</label>

@@ -27,19 +27,19 @@ Route::post('/sign-up','Auth\SignUp@store');
 Route::middleware([CheckRole::class])->group(function () {
     
     //roles
-    Route::get('/roles','Roles@index');
+    Route::get('/roles','Roles@index')->middleware('auth');
     Route::post('/role-update','Roles@update');
     Route::post('/role-add','Roles@store');
     Route::post('/role-delete','Roles@delete');
 
     //users
-    Route::get('/users','Users@index');
+    Route::get('/users','Users@index')->middleware('auth');
     Route::post('/user-update','Users@update');
     Route::post('/user-add','Users@store');
     Route::post('/user-delete','Users@delete');
     
     //expense-categories
-    Route::get('/expense-categories','ExpenseCategories@index');
+    Route::get('/expense-categories','ExpenseCategories@index')->middleware('auth');
     Route::post('/expense-categories-update','ExpenseCategories@update');
     Route::post('/expense-categories-add','ExpenseCategories@store');
     Route::post('/expense-categories-delete','ExpenseCategories@delete');

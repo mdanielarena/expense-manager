@@ -7,9 +7,11 @@
 
 @section('content')
 
+    
     <!-- Header Section-->
     <section class="dashboard-header section-padding">
         <div class="container-fluid">
+            <div id="dash_err"></div>
             <div class="row d-flex align-items-md-stretch">
                 <!-- Pie Chart-->
                 <div class="col-lg-3 col-md-6">
